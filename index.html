@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- This file is greatly simplified to improve startup times. -->
-
     <head>
 
-        <meta http-equiv="refresh" content="5; url=./system/home.html">
         <meta charset="UTF-8">
-
-        <style>
-            a { text-decoration: none; color: white; }
-            a:visited { color: white; }
-        </style>
 
         <title>WebOS | Startup</title>
 
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./system/common/css/bootmod.css">
+
     </head>
 
-    <body style="background: #1D4350; background: -webkit-linear-gradient(to top, #A43931, #1D4350); background: linear-gradient(to top, #A43931, #1D4350); overflow: hidden; margin: 0;">
+    <body class="bg-grad-servquick text-light 100vh">
 
-        <p style="width: 100vw; height: 100vh; font-family: sans-serif; color: white; font-size: 24px; margin: 10px">
-            <a href="./system/reset.html">Starting up...</a>
-        </p>
+        <!-- Boot Logo -->
+        <div class="bootlogo spin d-none">
+            <img src="./system/common/img/bootlogo.png">
+        </div>
+
+        <!-- Reset Link -->
+        <div class="bootreset d-none">
+            <a class="text-light" href="#">Reset WebOS</a>
+        </div>
+
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Interface Script -->
+        <script>
+
+            // Fade in.
+            $('.bootreset').hide(); $('.bootlogo').hide();
+            $('.bootreset').removeClass('d-none'); $('.bootlogo').removeClass('d-none');
+            $('.bootlogo').fadeIn(1000); $('.bootreset').fadeIn(2500);
+
+            // Auto fade out.
+            setTimeout(function() {
+                $('.bootreset').fadeOut(1000);
+                $('.bootlogo').fadeOut(1000, function() {
+                    window.location.href="./system/home.html?fromBoot=true";
+                })
+            }, 5000)
+
+            // Manual fade out.
+            $('.bootreset').click(function(e) {
+                e.preventDefault();
+                $('.bootreset').fadeOut(500);
+                $('.bootlogo').fadeOut(500, function() {
+                    window.location.href="./system/reset.html";
+                })
+            })
+
+        </script>
 
     </body>
 

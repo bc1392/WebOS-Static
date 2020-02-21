@@ -8,7 +8,8 @@
         <title>WebOS | Onboarding</title>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./common/css/bootmod.css">
 
     </head>
 
@@ -16,14 +17,17 @@
 
         <!-- Titlebar -->
         <nav class="navbar navbar-dark bg-dark">
-            <span class="navbar-brand mb-0 h1">Setup</span>
+            <span class="navbar-brand mb-0 h1" id="clock">00:00 AM</span>
         </nav>
 
         <!-- Setup Form -->
         <form class="container px-5 py-4" onsubmit="return false;">
 
-            <!-- User Name -->
-            <div class="row px-3 pt-5 pb-2 lead">User Name</div>
+            <!-- Title -->
+            <div class="row px-3 pt-4 pb-2 display-4">Setup</div>
+
+            <!-- User Information -->
+            <div class="row px-3 pt-5 pb-2 lead">User Information</div>
             <div class="row">
                 <div class="col"><input type="text" class="form-control" placeholder="First" id="user-name-first" autocomplete="off"></div>
                 <div class="col"><input type="text" class="form-control" placeholder="Last" id="user-name-last" autocomplete="off"></div>
@@ -40,6 +44,9 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Other Libraries/Modules -->
+        <script src="./common/js/clock.js"></script>
 
         <!-- Interface Script -->
         <script>

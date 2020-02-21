@@ -8,15 +8,16 @@
         <title>WebOS | Home</title>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./common/css/bootmod.css">
 
     </head>
 
-    <body>
+    <body class="d-none">
 
         <!-- Titlebar -->
-        <nav class="navbar navbar-dark bg-dark">
-            <span class="navbar-brand mb-0 h1">Home</span>
+        <nav class="navbar navbar-dark bg-dark" id="title">
+            <span class="navbar-brand mb-0 h1" id="clock">00:00 AM</span>
         </nav>
 
         <!-- Content -->
@@ -29,7 +30,7 @@
         </div>
 
         <!-- Onboarding Modal -->
-        <div class="modal" id="onboarding-modal">
+        <div class="modal shadow" id="onboarding-modal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -46,7 +47,7 @@
         </div>
 
         <!-- Update Modal -->
-        <div class="modal" id="update-modal">
+        <div class="modal shadow" id="update-modal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -70,31 +71,49 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+        <!-- Other Libraries/Modules -->
+        <script src="./common/js/clock.js"></script>
+        <script src="./common/js/urlparam.js"></script>
+
         <!-- Interface Script -->
         <script>
 
             // Initialization.
-            const currentBuild = 2;
+            const currentBuild = 3;
+            $('body').removeClass('d-none');
+
+            // Fade in if coming from boot and the user has been onboarded.
+            if (getUrlParam('fromBoot') == 'true' && localStorage.getItem('build')) {
+                $('body').hide();
+                $('body').fadeIn(1000);
+            }
 
             // Onboarding check.
             if (!localStorage.getItem('build')) {
                 localStorage.setItem('build', currentBuild);
-                $('#content').hide();
-                $('#onboarding-modal').modal('show');
+                $('#title').hide(); $('#content').hide();
+                $('#onboarding-modal').fadeIn(1000);
             }
-            $('#onboarding-execute').click(function() { window.location.href = './onboarding.html'; });
+            $('#onboarding-execute').click(function() {
+                $('body').fadeOut(1000, function() {
+                    window.location.href = './onboarding.html';
+                })
+            });
 
             // Update check.
             if (localStorage.getItem('build') < currentBuild) {
                 localStorage.setItem('build', currentBuild);
                 $('#update-build').text(currentBuild);
-                $('#update-modal').modal('show');
+                $('#update-modal').fadeIn(1000);
             }
 
             // Data loading.
             if (localStorage.getItem('build')) {
 
-                let userData = JSON.parse(localStorage.getItem('userData'));
+                // User Data.
+                let userData;
+                if (localStorage.getItem('userData')) userData = JSON.parse(localStorage.getItem('userData'));
+                else userData = { firstName: "(Load", lastName: "Error)" };
                 $('#user-name').text(userData.firstName + " " + userData.lastName);
 
             }

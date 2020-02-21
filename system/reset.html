@@ -7,17 +7,41 @@
 
         <title>WebOS | Reset</title>
 
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./common/css/bootmod.css">
+
     </head>
 
-    <body>
+    <body class="bg-grad-servquick text-light 100vh">
 
-        <h1>Resetting WebOS...</h1>
+        <!-- Boot Logo -->
+        <div class="bootlogo pulse d-none">
+            <img src="./common/img/bootlogo.png">
+        </div>
 
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Interface Script -->
         <script>
 
+            // Fade in.
+            $('.bootlogo').removeClass('d-none');
+            $('.bootlogo').hide();
+            $('.bootlogo').fadeIn(1000);
+
+            // Reset everything.
             localStorage.clear();
 
-            setTimeout(function() { window.location.href = "../index.html"; }, 5000);
+            // Fade out.
+            setTimeout(function() {
+                $('.bootlogo').fadeOut(1000, function() {
+                    window.location.href="../index.html";
+                })
+            }, 5000)
 
         </script>
 

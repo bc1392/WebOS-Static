@@ -1,0 +1,40 @@
+/* https://uigradients.com/#ServQuick */
+.bg-grad-servquick {
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@keyframes bootspin {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes bootpulse {
+    0% { transform: scale(100%); }
+    10% { transform: scale(100%); }
+    40% { transform: scale(110%); }
+    50% { transform: scale(110%); }
+    100% { transform: scale(100%); }
+}
+
+.bootlogo {
+    display: block; position: fixed;
+    top: calc(50% - 64px); left: calc(50% - 64px);
+}
+
+.bootlogo.spin {
+    animation-name: bootspin; animation-duration: 1s; animation-iteration-count: infinite;
+}
+
+.bootlogo.pulse {
+    animation-name: bootpulse; animation-duration: 2s; animation-iteration-count: infinite;
+}
+
+.bootreset {
+    display: block; position: fixed;
+    bottom: 0%; padding: 5px 10px;
+}
