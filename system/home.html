@@ -17,7 +17,10 @@
 
         <!-- Titlebar -->
         <nav class="navbar navbar-dark bg-dark" id="title">
-            <span class="navbar-brand mb-0 h1" id="clock">00:00 AM</span>
+            <div class="navbar-brand mb-0 h1">
+                <img class="home-btn disabled" src="common/img/home.png" href="#">
+                <span id="clock">00:00 AM</span>
+            </div>
         </nav>
 
         <!-- Content -->
@@ -73,13 +76,14 @@
 
         <!-- Other Libraries/Modules -->
         <script src="./common/js/clock.js"></script>
+        <script src="./common/js/homebtn.js"></script>
         <script src="./common/js/urlparam.js"></script>
 
         <!-- Interface Script -->
         <script>
 
             // Initialization.
-            const currentBuild = 3;
+            const currentBuild = 4;
             $('body').removeClass('d-none');
 
             // Fade in if coming from boot and the user has been onboarded.

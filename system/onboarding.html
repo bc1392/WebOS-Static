@@ -16,8 +16,11 @@
     <body>
 
         <!-- Titlebar -->
-        <nav class="navbar navbar-dark bg-dark">
-            <span class="navbar-brand mb-0 h1" id="clock">00:00 AM</span>
+        <nav class="navbar navbar-dark bg-dark" id="title">
+            <div class="navbar-brand mb-0 h1">
+                <img class="home-btn disabled" src="common/img/home.png" href="home.html">
+                <span id="clock">00:00 AM</span>
+            </div>
         </nav>
 
         <!-- Setup Form -->
@@ -47,6 +50,7 @@
 
         <!-- Other Libraries/Modules -->
         <script src="./common/js/clock.js"></script>
+        <script src="./common/js/homebtn.js"></script>
 
         <!-- Interface Script -->
         <script>
