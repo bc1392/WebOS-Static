@@ -108,7 +108,7 @@
             if (localStorage.getItem('build') < currentBuild) {
                 localStorage.setItem('build', currentBuild);
                 $('#update-build').text(currentBuild);
-                $('#update-modal').show();
+                $('#update-modal').modal('show');
             }
 
             // Data loading.
