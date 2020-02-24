@@ -11,6 +11,8 @@
 .home-btn:not(.disabled):hover { cursor: pointer; }
 .home-btn.disabled { filter: invert(1) brightness(0.6); }
 
+.app-link:hover:not([app-id="(none)"]) { cursor: pointer; }
+
 #clock {
     display: inline-block;
     vertical-align: middle;

@@ -24,11 +24,28 @@
         </nav>
 
         <!-- Content -->
-        <div class="container px-5 py-4" id="content">
+        <div class="container px-3 py-4" id="content">
 
             <!-- Greeting -->
             <div class="row pt-5 mb-n2 lead">Welcome back,</div>
             <div class="row ml-n4 display-4" id="user-name"></div>
+
+            <!-- App List -->
+            <div class="row pt-5 mx-n2 mx-sm-n5 mx-md-n4 mx-lg-n5">
+
+                <!-- Template -->
+                <!-- <div class="mx-1 mx-sm-2 mx-md-3 mx-lg-4 col-12 p-1 p-sm-2 p-lg-3 col-sm-6 col-md-4 col-lg-3 bg-light rounded-lg border shadow-sm text-center app-link" app-id="(none)">
+                    <img src="./common/img/bootlogo.png" class="w-100 rounded-lg">
+                    <label class="lead m-0 mt-2">Placeholder</label>
+                </div> -->
+
+                <!-- Calculator -->
+                <div class="mx-1 mx-sm-2 mx-md-3 mx-lg-4 col-12 p-1 p-sm-2 p-lg-3 col-sm-6 col-md-4 col-lg-3 bg-light rounded-lg border shadow-sm text-center app-link" app-id="calculator">
+                    <img src="../apps/calculator/common/img/icon.png" class="w-100 rounded-lg">
+                    <label class="lead m-0 mt-2">Calculator</label>
+                </div>
+
+            </div>
 
         </div>
 
@@ -83,7 +100,7 @@
         <script>
 
             // Initialization.
-            const currentBuild = 4;
+            const currentBuild = 5;
             $('body').removeClass('d-none');
 
             // Fade in if coming from boot and the user has been onboarded.
@@ -121,6 +138,13 @@
                 $('#user-name').text(userData.firstName + " " + userData.lastName);
 
             }
+
+            // App links.
+            $('.app-link').click(function(e) {
+                if ($(this).attr('app-id') != '(none)') {
+                    window.location.href = '../apps/' + $(this).attr('app-id') + '/main.html';
+                }
+            });
 
         </script>
 
